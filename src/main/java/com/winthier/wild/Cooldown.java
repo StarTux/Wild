@@ -13,6 +13,9 @@ public class Cooldown
     final WildPlugin plugin;
     private YamlConfiguration config = null;
     static final String SAVE_FILE = "cooldowns.yml";
+    static final long COOLDOWN_SECONDS_SMALL = 10;
+    static final long COOLDOWN_SECONDS_BIG = 60 * 60 * 12;
+    static final long FREE_SECONDS = 60 * 10;
 
     File saveFile()
     {
@@ -59,20 +62,20 @@ public class Cooldown
         final long now = System.currentTimeMillis();
         final long interval = now - lastUse;
         final long seconds = interval / 1000;
-        if (seconds < 10) {
+        if (seconds < COOLDOWN_SECONDS_SMALL) {
             // If they waited less than 10 seconds, tell them to wait a bit longer
-            int wait = 10 - (int)seconds;
-            return String.format("Please wait %d more seconds", wait);
+            long wait = COOLDOWN_SECONDS_SMALL - seconds;
+            if (wait > 1) return String.format("Please wait %d more seconds", (int)wait);
+            return "Please wait one more second";
         }
         // If they waited more than 12 hours, let them go
-        if (seconds > 60 * 60 * 12) {
-            return null;
-        }
+        if (seconds > COOLDOWN_SECONDS_BIG) return null;
         // If they waited more than 10 minutes, make them wait the full cooldown
-        if (seconds > 60 * 10) {
-            final long minutes = seconds / 60;
-            final long hours = minutes / 60;
-            return String.format("Please wait %02d:%02d more hours", (int)hours, (int)minutes);
+        if (seconds > FREE_SECONDS) {
+            final long secondsLeft = COOLDOWN_SECONDS_BIG - seconds;
+            final long minutesLeft = secondsLeft / 60;
+            final long hoursLeft = minutesLeft / 60;
+            return String.format("Please wait %02d:%02d more hours", (int)hoursLeft, (int)minutesLeft % 60);
         }
         // Anything in between, let them go
         return null;
