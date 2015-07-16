@@ -1,0 +1,21 @@
+name: Wild
+description: Help people find a place to build
+author: StarTux
+version: 0.1
+main: com.winthier.wild.WildPlugin
+depend: [ Claims ]
+commands:
+  Wild:
+    description: Teleport to a random place in the wild.
+    usage: /<command>
+    permission: wild.wild
+permissions:
+  wild.wild:
+    description: Use the "/wild" command.
+    default: op
+  wild.nocooldown:
+    description: Override hte cooldown
+    default: op
+  wild.reload:
+    description: Use the "/wild reload" command.
+    default: op
