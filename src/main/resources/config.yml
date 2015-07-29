@@ -2,7 +2,4 @@ wild:
   World: winthier
   Center: [ 0, 0 ]
   Radius: [ 9900, 9900 ]
-resource:
-  World: Resource
-  Center: [ 0, 0 ]
-  Radius: [ 1900, 1900 ]
+  Cooldown: 86400

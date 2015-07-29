@@ -61,7 +61,9 @@ public class WildPlugin extends JavaPlugin implements Listener {
         if (!floorMaterial.isSolid()) return null;
         final Location playerLocation = player.getLocation();
         final Location location = new Location(world, (double)x + 0.5, (double)y, (double)z + 0.5, playerLocation.getYaw(), playerLocation.getPitch());
-        if (!ClaimCheck.check(location)) return null;
+        if (getServer().getPluginManager().getPlugin("Claims") != null) {
+            if (!ClaimCheck.check(location)) return null;
+        }
         return location;
     }
 

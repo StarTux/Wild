@@ -3,9 +3,10 @@ description: Help people find a place to build
 author: StarTux
 version: 0.1
 main: com.winthier.wild.WildPlugin
-depend: [ Claims ]
+softdepend: [ Claims ]
 commands:
-  Wild:
+  wild:
+    aliases: [ wilderness ]
     description: Teleport to a random place in the wild.
     usage: /<command>
     permission: wild.wild
