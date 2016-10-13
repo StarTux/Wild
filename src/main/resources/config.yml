@@ -3,3 +3,6 @@ wild:
   Center: [ 0, 0 ]
   Radius: [ 9900, 9900 ]
   Cooldown: 86400
+  SmallCooldown: 60
+  FreeSeconds: 600
+  ClaimDistance: 100

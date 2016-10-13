@@ -20,8 +20,7 @@ public class WildTask extends BukkitRunnable {
         if (location == null) return;
         player.sendMessage("" + ChatColor.AQUA + "Taking you into the wild...");
         player.teleport(location);
-        plugin.getServer().dispatchCommand(plugin.getServer().getConsoleSender(), String.format("minecraft:title %s subtitle {color:aqua,text:'Welcome to the Danger Zone B)'}", player.getName()));
-        plugin.getServer().dispatchCommand(plugin.getServer().getConsoleSender(), String.format("minecraft:title %s title {color:aqua,text:Wilderness}", player.getName()));
+        player.sendTitle(ChatColor.GREEN+"Wilderness", ChatColor.GREEN+"Welcome to the Build World");
         stop();
         plugin.removeTask(player);
     }

@@ -62,7 +62,7 @@ public class WildPlugin extends JavaPlugin implements Listener {
         final Location playerLocation = player.getLocation();
         final Location location = new Location(world, (double)x + 0.5, (double)y, (double)z + 0.5, playerLocation.getYaw(), playerLocation.getPitch());
         if (getServer().getPluginManager().getPlugin("Claims") != null) {
-            if (!ClaimCheck.check(location)) return null;
+            if (!ClaimCheck.check(location, getConfig().getInt("wild.ClaimDistance", 100))) return null;
         }
         return location;
     }
