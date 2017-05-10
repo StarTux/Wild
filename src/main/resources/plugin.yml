@@ -6,7 +6,7 @@ main: com.winthier.wild.WildPlugin
 softdepend: [ Claims ]
 commands:
   wild:
-    aliases: [ wilderness ]
+    aliases: [ wilderness, build ]
     description: Teleport to a random place in the wild.
     usage: /<command>
     permission: wild.wild
